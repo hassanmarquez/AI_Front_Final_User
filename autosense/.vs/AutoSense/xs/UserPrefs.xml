@@ -1,0 +1,21 @@
+﻿<Properties StartupConfiguration="{52301928-E3CB-4D88-8DAB-23C5F326144F}|Default">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="Android.Pixel_3a_-_Android_14" />
+  <MonoDevelop.Ide.ItemProperties.AutoSense PreferredExecutionTarget="Android.Pixel_3a_-_Android_14" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Platforms/Android/MainActivity.cs">
+    <Files>
+      <File FileName="Platforms/Android/MainActivity.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__" />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.MonoDroid LastDeploySdkVersion="34.0.145" />
+</Properties>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AutoSense.Views.SummaryPage"
+             Title="">
+    <ContentPage.Resources>
+        <!-- Paleta de colores y estilos -->
+        <Style x:Key="SectionTitleStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="#333333" />
+            <Setter Property="Margin" Value="0,10,0,5" />
+        </Style>
+        <Style x:Key="FieldLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="#555555" />
+        </Style>
+        <Style x:Key="FieldValueStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="TextColor" Value="#666666" />
+            <Setter Property="Margin" Value="0,0,0,10" />
+        </Style>
+        <Color x:Key="FrameBackgroundColor">#f9f9f9</Color>
+    </ContentPage.Resources>
+
+    <StackLayout Padding="20" Spacing="20" BackgroundColor="#f0f0f5">
+
+        <!-- Diagnostic Summary Section -->
+        <Label Text="Diagnostic Summary" Style="{StaticResource SectionTitleStyle}" />
+
+        <!-- Styled Frame for Summary Fields -->
+        <Frame BackgroundColor="{StaticResource FrameBackgroundColor}" BorderColor="#d1d1d1" Padding="15" CornerRadius="10" HasShadow="True">
+            <StackLayout>
+                <!-- Date Display -->
+                <Label Text="Date:" Style="{StaticResource FieldLabelStyle}" />
+                <Label Text="{Binding Date}" Style="{StaticResource FieldValueStyle}" />
+
+                <!-- Error Code Display -->
+                <Label Text="Error Code:" Style="{StaticResource FieldLabelStyle}" />
+                <Label Text="{Binding ErrorCode}" Style="{StaticResource FieldValueStyle}" />
+
+                <!-- Problem Description Display -->
+                <Label Text="Problem Description:" Style="{StaticResource FieldLabelStyle}" />
+                <Label Text="{Binding ProblemDescription}" Style="{StaticResource FieldValueStyle}" />
+
+                <!-- Suggestions Display -->
+                <Label Text="Suggestions:" Style="{StaticResource FieldLabelStyle}" />
+                <Label Text="{Binding Suggestions}" Style="{StaticResource FieldValueStyle}" />
+            </StackLayout>
+        </Frame>
+
+        <!-- Repair Details Section -->
+        <Label Text="Repair Details" Style="{StaticResource SectionTitleStyle}" />
+
+        <!-- Styled Frame for Repair Details Fields -->
+        <Frame BackgroundColor="{StaticResource FrameBackgroundColor}" BorderColor="#d1d1d1" Padding="15" CornerRadius="10" HasShadow="True">
+            <StackLayout>
+                <!-- Labor Display -->
+                <Label Text="Labor:" Style="{StaticResource FieldLabelStyle}" />
+                <Label Text="{Binding Labor}" Style="{StaticResource FieldValueStyle}" />
+
+                <!-- Components Display -->
+                <Label Text="Components:" Style="{StaticResource FieldLabelStyle}" />
+                <Label Text="{Binding Components}" Style="{StaticResource FieldValueStyle}" />
+
+                <!-- Repair Time Display -->
+                <Label Text="Repair Time:" Style="{StaticResource FieldLabelStyle}" />
+                <Label Text="{Binding RepairTime}" Style="{StaticResource FieldValueStyle}" />
+            </StackLayout>
+        </Frame>
+
+        <!-- Styled Button for Scheduling Review -->
+        <Button Text="Programming Review" 
+                Command="{Binding ScheduleRepairCommand}" 
+                BackgroundColor="#007acc" 
+                TextColor="White" 
+                CornerRadius="5" 
+                FontAttributes="Bold" 
+                FontSize="18"
+                Padding="15,5"
+                Margin="0,20,0,0" />
+
+    </StackLayout>
+</ContentPage>

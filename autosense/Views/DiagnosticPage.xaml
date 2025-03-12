@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AutoSense.Views.DiagnosticPage">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Botón redondo en la parte superior -->
+        <Button 
+            Text="🎤"
+            Clicked="OnSpeechToTextClicked"
+            WidthRequest="50"
+            HeightRequest="50"
+            CornerRadius="25"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            BackgroundColor="LightBlue"
+            Grid.Row="0" />
+
+        <!-- Título -->
+        <Label
+            Text="Diagnosis History"
+            SemanticProperties.HeadingLevel="Level1"
+            FontSize="14"
+            HorizontalOptions="Center"
+            Grid.Row="0"
+            Margin="0,60,0,0" />
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="25" Padding="20">
+
+                <!-- Lista de texto generado -->
+                <CollectionView x:Name="GeneratedTextList">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="{Binding BackgroundColor}" Padding="10" Margin="5">
+                                <Label Text="{Binding Text}" HorizontalOptions="{Binding HorizontalOptions}" />
+                            </Frame>                    
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Botón en la parte inferior -->
+        <Button 
+            Text="Summary"
+            Clicked="OnSummaryClicked"
+            HorizontalOptions="Center"
+            VerticalOptions="End"
+            BackgroundColor="LightBlue"
+            Grid.Row="2"
+            Margin="20" />
+    </Grid>
+
+</ContentPage>

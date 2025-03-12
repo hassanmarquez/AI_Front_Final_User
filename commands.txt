@@ -1,0 +1,40 @@
+documentation
+https://learn.microsoft.com/en-us/dotnet/maui/get-started/installation?view=net-maui-8.0&tabs=visual-studio-code
+https://learn.microsoft.com/en-us/dotnet/maui/get-started/installation?view=net-maui-8.0&tabs=visual-studio-code#using-the-installandroiddependencies-target
+
+
+dotnet workload install maui
+
+dotnet workload list
+
+dotnet build -t:InstallAndroidDependencies -f:net8.0-android -p:AndroidSdkDirectory="C:\Users\ovivas\AppData\Local\Android\Sdk" -p:JavaSdkDirectory="C:\Program Files\Android\Android Studio\jbr" -p:AcceptAndroidSDKLicenses=True
+
+Mac
+dotnet build -t:InstallAndroidDependencies -f:net8.0-android -p:AndroidSdkDirectory="/Users/oscarvivas/Library/Android/sdk" -p:JavaSdkDirectory="/Library/Java/JavaVirtualMachines/microsoft-17.jdk/Contents/Home" -p:AcceptAndroidSDKLicenses=True
+sudo chown $(whoami) /Users/$(whoami)/.nuget/NuGet 
+sudo chown $(whoami) /Users/$(whoami)/.nuget/NuGet/NuGet.Config
+sudo chown $(whoami) /Users/$(whoami)/.nuget/packages/
+sudo chown $(whoami) /Users/$(whoami)/.local/share/NuGet/http-cache/670c1461c29885f9aa22c281d8b7da90845b38e4$ps:_api.nuget.org_v3_index.json/nupkg_xamarin.androidx.fragment.1.6.1.dat-new
+sudo chown $(whoami) /Users/$(whoami)/.local/share/NuGet/http-cache/670c1461c29885f9aa22c281d8b7da90845b38e4$ps:_api.nuget.org_v3_index.json/vuln_index.dat-new
+sudo chown $(whoami) /Users/$(whoami)/Documents/WorkSpace/innovationlab/autosense/AutoSense/AutoSense.csproj
+
+cd /Users/oscarvivas/Library/Android/sdk/cmdline-tools/11.0/bin
+./sdkmanager "platform-tools"
+./sdkmanager --licenses --verbose
+-----acepte todo a todo yes
+
+cd /Users/oscarvivas/Library/Android/sdk/cmdline-tools/11.0/bin
+./sdkmanager "system-images;android-34;google_apis;x86_64"
+
+/----- bluetooth
+dotnet add package Plugin.BLE
+
+
+//--- TO DO --//
+* configurar bluetoothHandler.StateChanged += (sender, args) => { text = args.NewState } 
+* blueadapter.ScanMode = ScanMode.LowPower;
+* blueadapter.ScanTimeout = 10000;
+* blueadapter.ScanTimeoutElapsed += (sender, args) => { text = blueHandler.State }
+* validar que no se repita en la lista de dispositivos antes de agrgarlo
+* apagar el escaneo de los dispositivos al conectar 
+* if bleAdapter.IsScannig  { await bleAdapter.StopScanningForDevicesAsync() }

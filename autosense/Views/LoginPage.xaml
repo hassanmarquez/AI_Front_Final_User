@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AutoSense.Views.LoginPage"
+             xmlns:viewmodels="clr-namespace:AutoSense.ViewModels">
+
+    <ContentPage.Resources>
+        <Style x:Key="QuickLoginButtonStyle" TargetType="Button">
+            <Setter Property="Text" Value="Quick Login" />
+            <Style.Triggers>
+                <DataTrigger TargetType="Button" Binding="{Binding DemoTime}" Value="True">
+                    <Setter Property="BackgroundColor" Value="White" />
+                    <Setter Property="Text" Value="" />
+                </DataTrigger>
+            </Style.Triggers> 
+        </Style>
+        <Style x:Key="DemoOnButtonStyle" TargetType="Button">
+            <Setter Property="Text" Value="Demo ON" /> 
+            <Style.Triggers>
+                <DataTrigger TargetType="Button" Binding="{Binding DemoTime}" Value="True">
+                    <Setter Property="Text" Value="___" />
+                    <Setter Property="BackgroundColor" Value="White" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="QuickLoginLabelStyle" TargetType="Button">
+           
+        </Style>
+    </ContentPage.Resources>
+
+    <AbsoluteLayout>
+        <Button                 
+                Command="{Binding QuickLoginCommand}"
+                Style="{StaticResource QuickLoginButtonStyle}"
+                AbsoluteLayout.LayoutBounds="0.5, 0.19, -1, -1"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                HorizontalOptions="Center"
+                VerticalOptions="Start" ZIndex="10" />
+
+        <Button 
+                Command="{Binding DemoOnCommand}"
+                Style="{StaticResource DemoOnButtonStyle }"
+                AbsoluteLayout.LayoutBounds="0.5, 0.3, -1, -1"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                HorizontalOptions="Center"
+                VerticalOptions="Start" ZIndex="10" />
+        
+        <ScrollView AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All">
+            <VerticalStackLayout Spacing="25" Padding="30,0" VerticalOptions="Center">
+
+                <ActivityIndicator IsRunning="{Binding IsBusy}" 
+                                 IsVisible="{Binding IsBusy}"
+                                 HorizontalOptions="Center" />
+
+                <Image Source="autosense_light.png"
+                       SemanticProperties.Description="Logo"
+                       HeightRequest="150"
+                       HorizontalOptions="Center" />
+
+                <Label Text="Login"
+                       SemanticProperties.HeadingLevel="Level1"
+                       FontSize="32"
+                       HorizontalOptions="Center" />
+
+                <Entry Placeholder="Usuario"
+                       Text="{Binding Username}"
+                       IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
+                       HorizontalOptions="Fill" />
+
+                <Entry Placeholder="Contraseña"
+                       Text="{Binding Password}"
+                       IsPassword="True"
+                       IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
+                       HorizontalOptions="Fill" />
+
+                <Button Text="Iniciar Sesión"
+                        Command="{Binding LoginCommand}"
+                        IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
+                        HorizontalOptions="Center" />
+
+                <Label Text="{Binding ErrorMessage}"
+                       TextColor="Red"
+                       IsVisible="{Binding ErrorMessage, Converter={StaticResource StringToBoolConverter}}"
+                       HorizontalOptions="Center" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </AbsoluteLayout>
+</ContentPage>

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             FlyoutLayoutBehavior="Popover"
+             x:Class="AutoSense.Views.WelcomePage">
+
+
+    <FlyoutPage.Flyout>
+        <ContentPage Title="Menu">
+            <VerticalStackLayout Padding="20">
+                <Image x:Name="profileimage"
+                       Source="profile_image.png"
+                       WidthRequest="100"
+                       HeightRequest="100"
+                       Aspect="AspectFill"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center">
+                    <Image.Clip>
+                        <EllipseGeometry Center="60,60" RadiusX="70" RadiusY="70"/>
+                    </Image.Clip>
+                </Image>
+
+                <Label
+                     Text="{Binding WelcomeMessage}"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     FontSize="18"
+                     Margin="0,0,0,0"/>
+
+                <Button 
+                    Text="OBD2 Connection"
+                    Clicked="OnBluetoothClicked"
+                    Margin="0,0,0,10"/>
+
+                <Button 
+                    Text="Diagnostic"
+                    Clicked="OnDiagnosticClicked"
+                    Margin="0,0,0,10"/>
+
+                <Button 
+                    Text="Register Vehicle"
+                    Clicked="OnServicesClicked"
+                    Margin="0,0,0,10"/>
+
+                <Button 
+                    Text="Historic Diagnostic"
+                    Clicked="OnGaucheClicked"
+                    Margin="0,0,0,10"/>
+
+                <Button 
+                    Text="Logout"
+                    Clicked="OnLogoutClicked"/>
+            </VerticalStackLayout>
+        </ContentPage>
+    </FlyoutPage.Flyout>
+
+    <FlyoutPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <ContentPage>
+                    <VerticalStackLayout Padding="20">
+                        <Image
+                            Source="dotnet_bot.png"
+                            SemanticProperties.Description="Logo"
+                            HeightRequest="150"
+                            HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </ContentPage>
+            </x:Arguments>
+            <NavigationPage.ToolbarItems>
+                <ToolbarItem Text="Menu" IconImageSource="menu_icon.png" Clicked="OnShowMenuClicked" />
+                <ToolbarItem Text="{Binding TitleMessage}" />
+                <ToolbarItem Text="Connect status" IconImageSource="connected_icon.png" Clicked="OnShowMenuClicked" />
+            </NavigationPage.ToolbarItems>
+        </NavigationPage>
+    </FlyoutPage.Detail>
+</FlyoutPage>

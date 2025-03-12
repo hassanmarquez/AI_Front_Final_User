@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AutoSense.Pages.BluetoothConnectPage"
+             Title="BluetoothConnectPage">
+    <VerticalStackLayout>
+        
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Button 
+                x:Name="ScanButton"
+                Text="Escanear dispositivos"
+                SemanticProperties.Hint="Escanea dispositivos Bluetooth cercanos"
+                Clicked="OnScanButtonClicked"
+                HorizontalOptions="Center" />
+
+        <ListView 
+                ItemsSource="{Binding DeviceList}"
+                SelectedItem="{Binding SelectedDevice, Mode=TwoWay}"
+                HasUnevenRows="True"
+                HeightRequest="400">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Name}" FontAttributes="Bold" />
+                            <Label Text="{Binding Id, StringFormat='ID: {0}'}" FontSize="Small" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button 
+                x:Name="ConnectButton"
+                Text="Conectar al dispositivo seleccionado"
+                SemanticProperties.Hint="Conecta al dispositivo Bluetooth seleccionado"
+                Clicked="OnConnectButtonClicked"
+                HorizontalOptions="Center" />
+
+        <Frame BorderColor="LightGray" Padding="10" CornerRadius="5">
+            <StackLayout>
+                <Label Text="Datos recibidos:" FontAttributes="Bold" />
+                <Label x:Name="ReceivedDataBluetoothLabel" Text="Esperando datos..." />
+            </StackLayout>
+        </Frame>
+        
+    </VerticalStackLayout>
+</ContentPage>
